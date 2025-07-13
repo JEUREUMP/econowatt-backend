@@ -35,4 +35,14 @@ app.get("/callback", async (req, res) => {
 
 app.listen(PORT, () => {
   console.log(`Serveur ÉconoWatt actif sur le port ${PORT}`);
+});const express = require('express');
+const app = express();
+const PORT = process.env.PORT || 10000;
+
+app.get('/', (req, res) => {
+  res.send('Bienvenue sur l’API ÉconoWatt !');
+});
+
+app.listen(PORT, () => {
+  console.log(`Serveur ÉconoWatt actif sur le port ${PORT}`);
 });

@@ -1,14 +1,18 @@
-import express from "express";
-import cors from "cors";
-import dotenv from "dotenv";
-import axios from "axios";
+const express = require("express");
+const cors = require("cors");
+const dotenv = require("dotenv");
+const axios = require("axios");
 
 dotenv.config();
 const app = express();
 app.use(cors());
 app.use(express.json());
 
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 10000;
+
+app.get("/", (req, res) => {
+  res.send("Bienvenue sur le backend ÉconoWatt !");
+});
 
 app.get("/callback", async (req, res) => {
   const { code } = req.query;
@@ -31,16 +35,6 @@ app.get("/callback", async (req, res) => {
     console.error("Erreur:", err.response?.data || err.message);
     res.status(500).send("Erreur lors de l'échange de token");
   }
-});
-
-app.listen(PORT, () => {
-  console.log(`Serveur ÉconoWatt actif sur le port ${PORT}`);
-});const express = require('express');
-const app = express();
-const PORT = process.env.PORT || 10000;
-
-app.get('/', (req, res) => {
-  res.send('Bienvenue sur l’API ÉconoWatt !');
 });
 
 app.listen(PORT, () => {

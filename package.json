@@ -1,6 +1,7 @@
 {
   "name": "econowatt-backend",
   "version": "1.0.0",
+  "description": "Backend pour l'application ÉconoWatt",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
@@ -9,31 +10,6 @@
     "axios": "^1.6.7",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
-    "express": "^4.19.2"
+    "express": "^4.18.2"
   }
 }
-// ---------- server.js ----------
-const express = require("express");
-const cors    = require("cors");
-const dotenv  = require("dotenv");
-
-dotenv.config();
-const app  = express();
-const PORT = process.env.PORT || 10000;
-
-app.use(cors());
-app.use(express.json());
-
-// Page d’accueil
-app.get("/", (req, res) => {
-  res.send("Bienvenue sur le backend ÉconoWatt !");
-});
-
-// Route Enedis (vide pour l’instant)
-app.get("/callback", (req, res) => {
-  res.send("Route /callback prête, Enedis à brancher.");
-});
-
-app.listen(PORT, () =>
-  console.log(`✅  Serveur ÉconoWatt actif sur le port ${PORT}`)
-);
